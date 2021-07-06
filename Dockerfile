@@ -4,12 +4,10 @@ RUN mkdir /app
 WORKDIR /app
 
 COPY package.json ./
-COPY yarn.json ./
-
-RUN yarn
+COPY yarn.lock ./
 
 COPY . ./
 
-RUN yarn build --production
+RUN yarn install
 
-CMD yarn build
+CMD yarn build --production

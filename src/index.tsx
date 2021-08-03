@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from 'app';
 import reportWebVitals from 'reportWebVitals';
 import 'style/master.sass';
-import COLOR from 'assets/colors.json';
+import COLORS from 'assets/colors.json';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,7 +13,7 @@ ReactDOM.render(
 );
 
 const docElem = document.documentElement;
-Object.entries(COLOR).forEach(([key, value]) =>
+Object.entries(COLORS).forEach(([key, value]) =>
   docElem.style.setProperty(`--color-${key}`, value)
 );
 

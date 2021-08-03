@@ -38,6 +38,7 @@
 	justify-content: space-between
 
 .linkContainer
+	transition: .2s
 	width: 7.5rem
 	display: flex
 	justify-content: space-between
@@ -45,6 +46,12 @@
 
 	& svg
 		max-height: 3rem
+
+	&>*
+		transition: .125s
+		&:hover
+			transition: .125s
+			transform: scale(1.05)
 
 .text
 	width: 30rem

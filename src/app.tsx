@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import COLORS from "assets/colors.json"
+import COLORS from 'assets/colors.json';
 import Style from 'style/modules/app.module.sass';
 import { ReactComponent as GithubSVG } from 'assets/github.svg';
 import { ReactComponent as MailSVG } from 'assets/mail.svg';
 import { ReactComponent as WaveSVG } from 'assets/wave.svg';
+import { getTheme } from 'index';
 
 export default class App extends Component {
-
   render() {
     return (
       <div id={Style.APP}>
@@ -18,8 +18,16 @@ export default class App extends Component {
 
         <div className={Style.contentContainer}>
           <div className={Style.linkContainer}>
-            <a href="https://github.com/comeza" target="_blank" rel="noreferrer"><GithubSVG fill={COLORS.foreground}/></a>
-            <a href="mailto:aaron@geigr.io"><MailSVG fill={COLORS.foreground}/></a>
+            <a
+              href="https://github.com/comeza"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <GithubSVG fill={COLORS[getTheme()].foreground} />
+            </a>
+            <a href="mailto:aaron@geigr.io">
+              <MailSVG fill={COLORS[getTheme()].foreground} />
+            </a>
           </div>
 
           <div className={Style.text}>

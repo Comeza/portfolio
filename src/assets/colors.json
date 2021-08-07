@@ -1,12 +1,12 @@
 {
   "light": {
     "accent": "#FF4655",
-    "background": "#121317",
+    "background": "#EBEBEB",
     "foreground": "#1C1B20"
   },
   "dark": {
     "accent": "#FF4655",
     "foreground": "#EBEBEB",
-    "background": "#121317"
+    "background": "#1C1B20"
   }
 }

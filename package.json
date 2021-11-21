@@ -17,6 +17,8 @@
     "sass": "^1.43.4",
     "typescript": "^4.3.2",
     "vite": "^2.6.4",
+    "vite-plugin-react-svg": "^0.2.0",
+    "vite-plugin-svgr": "^0.6.0",
     "vite-tsconfig-paths": "^3.3.17"
   }
 }

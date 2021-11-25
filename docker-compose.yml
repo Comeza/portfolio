@@ -1,0 +1,8 @@
+version: '3.7'
+
+services:
+  build-portfolio:
+    container_name: build-portfolio
+    build: .
+    volumes:
+      - ./dist/:/app/dist/

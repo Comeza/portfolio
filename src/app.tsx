@@ -11,8 +11,7 @@ export default () => {
 
       <div className={Style.TraitContainer}>
         <span>student.</span>
-        <span>web developer.</span>
-        <span>software developer.</span>
+        <span>developer.</span>
       </div>
 
       <div className={Style.LinksContainer}>

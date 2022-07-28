@@ -16,7 +16,9 @@ export default () => {
 
       <div className={Style.LinksContainer}>
         <a href="https://github.com/comeza">github</a>
-        <a href="mailto:aaron@geigr.io">mail</a>
+				<a href="https://matrix.to/#/@aaron:geigr.dev">matrix</a>
+        <a href="mailto:aaron@geigr.dev">mail</a>
+
       </div>
     </div>
   );

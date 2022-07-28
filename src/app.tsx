@@ -4,7 +4,7 @@ import {createShaderCanvas} from "react-shader-canvas"
 import shader from "shader/shader.glsl"
 import contacts from "links.json"
 
-const Shader = createShaderCanvas(props => shader)
+const Shader = createShaderCanvas(_ => shader)
 
 interface Contact {
 	name: string;

@@ -1,25 +1,47 @@
+import {useState} from 'react';
 import Style from 'modules/app.module.sass';
-import Icons from 'assets/icons';
+import {createShaderCanvas} from "react-shader-canvas"
+import shader from "shader/shader.glsl"
+import contacts from "links.json"
+
+const Shader = createShaderCanvas(props => shader)
+
+interface Contact {
+	name: string;
+	url: string;
+}
 
 export default () => {
-  return (
-    <div className={Style.AppContainer}>
-      <div className={Style.NameContainer}>
-        <span>Aaron</span>
-        <span>Geiger</span>
-      </div>
+	const [timeSync, _] = useState(false);
 
-      <div className={Style.TraitContainer}>
-        <span>student.</span>
-        <span>developer.</span>
-      </div>
+	console.log(contacts);
 
-      <div className={Style.LinksContainer}>
-        <a href="https://github.com/comeza">github</a>
-				<a href="https://matrix.to/#/@aaron:geigr.dev">matrix</a>
-        <a href="mailto:aaron@geigr.dev">mail</a>
+	return (
+		<div>
+			<div className={Style.background}>
+				<Shader
+					id="experimental-step-curve"
+					timeSync={timeSync}
+					width={window.innerWidth}
+					height={window.innerHeight}
+				/>
+			</div>
+			<div className={Style.AppContainer}>
+				<div className={Style.NameContainer}>
+					<span>Aaron</span>
+					<span>Geiger</span>
+				</div>
 
-      </div>
-    </div>
-  );
-};
+				<div className={Style.TraitContainer}>
+					<span>student.</span>
+					<span>developer.</span>
+				</div>
+
+				<div className={Style.LinksContainer}>
+					{ (contacts as Contact[]).map((contact: Contact) => (<a href={contact.url} key={contact.url}>{contact.name}</a>)) }
+				</div>
+			</div>
+		</div>
+	);
+}
+

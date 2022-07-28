@@ -8,17 +8,20 @@
   },
   "dependencies": {
     "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react-dom": "^17.0.0",
+    "react-shader-canvas": "^1.0.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@vitejs/plugin-react": "^1.0.0",
+    "prop-types": "^15.8.1",
     "sass": "^1.43.4",
     "typescript": "^4.3.2",
     "vite": "^2.6.4",
     "vite-plugin-react-svg": "^0.2.0",
     "vite-plugin-svgr": "^0.6.0",
+    "vite-raw-plugin": "^1.0.1",
     "vite-tsconfig-paths": "^3.3.17"
   }
 }

@@ -14,8 +14,6 @@ interface Contact {
 export default () => {
 	const [timeSync, _] = useState(false);
 
-	console.log(contacts);
-
 	return (
 		<div>
 			<div className={Style.background}>

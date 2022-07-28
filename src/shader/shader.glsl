@@ -38,7 +38,7 @@ float fbm(vec2 pos) {
 
 void main() {
 	vec2 pos = (gl_FragCoord.xy - res) / min(res.x, res.y);
-	float f = fbm(pos * 7.0 * vec2(fbm(pos - (time / 5.0)), fbm(pos / 2.0 - (time / 8.0))));
+	float f = fbm(pos * 7.0 * vec2(fbm(pos - (time / 32.0)), fbm(pos / 2.0 - (time / 8.0))));
 	vec3 colour = vec3(0.04, 0.5, 1.0);
 	
 	colour = (f * 0.25) * colour;

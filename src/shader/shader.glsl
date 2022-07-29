@@ -41,6 +41,6 @@ void main() {
 	float f = fbm(pos * 7.0 * vec2(fbm(pos - (time / 32.0)), fbm(pos / 2.0 - (time / 8.0))));
 	vec3 colour = vec3(0.04, 0.5, 1.0);
 	
-	colour = (f * 0.25) * colour;
+	colour = (f * 0.5) * colour;
 	gl_FragColor = vec4(colour, 1.0);
 }

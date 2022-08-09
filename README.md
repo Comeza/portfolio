@@ -1,5 +1,5 @@
 # PORTFOLIO PAGE
-[GEIGR.IO](https://geigr.io)
+[GEIGR.IO](https://geigr.dev)
 
 ## BUILD
 To build the project inside a docker container run:

@@ -1,45 +1,47 @@
-import {useState} from 'react';
-import Style from 'modules/app.module.sass';
-import {createShaderCanvas} from "react-shader-canvas"
-import shader from "shader/shader.glsl"
-import contacts from "links.json"
+import { useState } from "react";
+import { createShaderCanvas } from "react-shader-canvas";
+import shader from "assets/shader/shader.frag";
+import contacts from "links.json";
 
-const Shader = createShaderCanvas(_ => shader)
+const Shader = createShaderCanvas((_) => shader);
 
 interface Contact {
-	name: string;
-	url: string;
+  name: string;
+  url: string;
 }
 
-export default () => {
-	const [timeSync, _] = useState(false);
+export const App = () => {
+  const [timeSync, _] = useState(false);
 
-	return (
-		<div>
-			<div className={Style.background}>
-				<Shader
-					id="experimental-step-curve"
-					timeSync={timeSync}
-					width={window.innerWidth}
-					height={window.innerHeight}
-				/>
-			</div>
-			<div className={Style.AppContainer}>
-				<div className={Style.NameContainer}>
-					<span>Aaron</span>
-					<span>Geiger</span>
-				</div>
+  return (
+    <div>
+      <div className="">
+        <Shader
+          id="bg-shaer"
+          timeSync={timeSync}
+          width={window.innerWidth}
+          height={window.innerHeight}
+        />
+      </div>
+      <div>
+        <div>
+          <span>Aaron</span>
+          <span>Geiger</span>
+        </div>
 
-				<div className={Style.TraitContainer}>
-					<span>student.</span>
-					<span>developer.</span>
-				</div>
+        <div>
+          <span>student.</span>
+          <span>developer.</span>
+        </div>
 
-				<div className={Style.LinksContainer}>
-					{ (contacts as Contact[]).map((contact: Contact) => (<a href={contact.url} key={contact.url}>{contact.name}</a>)) }
-				</div>
-			</div>
-		</div>
-	);
-}
-
+        <div>
+          {(contacts as Contact[]).map((contact: Contact) => (
+            <a href={contact.url} key={contact.url}>
+              {contact.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};

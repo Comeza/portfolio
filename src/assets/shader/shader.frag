@@ -23,24 +23,35 @@ float noise(vec2 pos) {
 	return mix(a, b, u.x) + (c - a) * u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
 }
 
+vec3 rotate(vec3 item, float deg) {
+	mat3 rot = mat3(cos(deg), sin(deg), 0, -sin(deg), cos(deg), 0, 0, 0, 1);
+	return rot * item;
+}
+
 float fbm(vec2 pos) {
 	float v = 0.0;
 	float a = 0.5;
-	vec2 shift = vec2(100.0);
-	mat2 rot = mat2(cos(0.15), sin(0.15), -sin(0.25), cos(0.5));
+	float degree = 0.15;
+
+	vec2 offset = vec2(100.0);
+
 	for (int i=0; i < 12; i++) {
 		v += a * noise(pos);
-		pos = rot * pos * 2. + shift;
+		pos = rotate(vec3(pos, 0), degree).xy * 2. + offset;
 		a *= 0.55;
 	}
+
 	return v;
 }
 
-void main() {
+vec3 smoke() {
 	vec2 pos = (gl_FragCoord.xy - res) / min(res.x, res.y);
 	float f = fbm(pos * 7.0 * vec2(fbm(pos - (time / 32.0)), fbm(pos / 2.0 - (time / 8.0))));
-	vec3 colour = vec3(0.04, 0.5, 1.0);
+	vec3 color = vec3(0.04, 0.5, 1.0) * (f * 0.5);
 	
-	colour = (f * 0.5) * colour;
-	gl_FragColor = vec4(colour, 1.0);
+	return rotate(color, u_time * .0001);
+}
+
+void main() {
+	gl_FragColor = vec4(smoke(), 1.0);
 }

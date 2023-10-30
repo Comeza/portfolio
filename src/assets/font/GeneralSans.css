@@ -1,6 +1,6 @@
 @font-face {
 	font-family: 'GeneralSans';
-	src: format('woff2-variable') url('font/GeneralSasns-Variable.woff2'),
-    format('woff-variable') url('font/GeneralSans-Variable.woff'),
-    format('treutype-variable') url('font/GeneralSans-Variable.ttf');
+	src: format('woff2-variable') url('./GeneralSans-Variable.woff2'),
+    format('woff-variable') url('./GeneralSans-Variable.woff'),
+    format('treutype-variable') url('./GeneralSans-Variable.ttf');
 }

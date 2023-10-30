@@ -49,7 +49,11 @@ vec3 smoke() {
 	float f = fbm(pos * 7.0 * vec2(fbm(pos - (time / 32.0)), fbm(pos / 2.0 - (time / 8.0))));
 	vec3 color = vec3(0.04, 0.5, 1.0) * (f * 0.5);
 	
-	return rotate(color, u_time * .0001);
+	return rotate(color, u_time * .1);
+}
+
+vec3 ascii() {
+	return vec3(.0);
 }
 
 void main() {

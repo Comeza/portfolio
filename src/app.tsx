@@ -1,28 +1,38 @@
-import { useState } from "react";
-import { createShaderCanvas } from "react-shader-canvas";
-import shader from "assets/shader/shader.frag";
+import fragmentShader from "assets/shader/shader.frag";
+import vertexShader from "assets/shader/default.vert";
 import links from "assets/links.json";
 import quotes from "assets/quotes.json";
+import image from "assets/font.png";
 
-const Shader = createShaderCanvas((_) => shader);
+import { Shader, ShaderProps } from "Shader";
 
-interface Contact {
+interface Link {
   name: string;
   url: string;
 }
 
 export const App = () => {
-  const [timeSync, _] = useState(false);
   const quote = quotes[new Date().getDate() % quotes.length];
+
+  const shader: ShaderProps = {
+    vertexShader,
+    fragmentShader,
+    canvasProps: {
+      width: window.innerWidth,
+      height: window.innerHeight,
+    },
+  };
+
+  const uniforms = {
+    u_texture: image,
+    u_texture_size: 8,
+    u_texture_items: 8,
+    u_custom_color: [1.0, 0.0, 0.0, 1],
+  };
 
   return (
     <div>
-      <Shader
-        id="bg-shaer"
-        timeSync={timeSync}
-        width={window.innerWidth}
-        height={window.innerHeight}
-      />
+      <Shader {...shader} />
       <div className="d-flex">
         <div className="v-line" />
         <div className="d-flex flex-v">
@@ -38,7 +48,7 @@ export const App = () => {
           </div>
 
           <div className="d-flex flex-v box">
-            {(links as Contact[]).map((contact: Contact) => (
+            {(links as Link[]).map((contact: Link) => (
               <a href={contact.url} key={contact.url}>
                 {contact.name}
               </a>

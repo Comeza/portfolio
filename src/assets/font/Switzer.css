@@ -30,7 +30,6 @@
  *
 */
 
-
 /**
 * This is a variable font
 * You can controll variable axes as shown below:
@@ -43,22 +42,21 @@
 */
 
 @font-face {
-  font-family: 'Switzer';
-  src: url('./Switzer-Variable.woff2') format('woff2'),
-       url('./Switzer-Variable.woff') format('woff'),
-       url('./Switzer-Variable.ttf') format('truetype');
-       font-weight: 100 900;
-       font-display: swap;
-       font-style: normal;
+  font-family: "Switzer";
+  src: url("./Switzer-Variable.woff2") format("woff2"),
+    url("./Switzer-Variable.woff") format("woff"),
+    url("./Switzer-Variable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
 }
 
 @font-face {
-  font-family: 'SwitzerItalic';
-  src: url('./Switzer-VariableItalic.woff2') format('woff2'),
-       url('./Switzer-VariableItalic.woff') format('woff'),
-       url('./Switzer-VariableItalic.ttf') format('truetype');
-       font-weight: 100 900;
-       font-display: swap;
-       font-style: italic;
+  font-family: "SwitzerItalic";
+  src: url("./Switzer-VariableItalic.woff2") format("woff2"),
+    url("./Switzer-VariableItalic.woff") format("woff"),
+    url("./Switzer-VariableItalic.ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: italic;
 }
-

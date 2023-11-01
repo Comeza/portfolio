@@ -4,9 +4,11 @@ precision mediump float;
 
 uniform vec2 u_resolution;
 uniform float u_time;
+uniform float u_dt;
 
-#define time u_time 
+#define time u_time
 #define res u_resolution
+
 
 float random(vec2 pos) {
 	return fract(1.0 * sin(pos.y + fract(80.0 * sin(pos.x))));
@@ -52,10 +54,17 @@ vec3 smoke() {
 	return rotate(color, u_time * .1);
 }
 
-vec3 ascii() {
-	return vec3(.0);
+vec2 mod_vec2(vec2 v, float m) {
+	return vec2(mod(v.x, m), mod(v.y, m));
+}
+
+vec3 ascii(vec3 color) {
+	return color;
 }
 
 void main() {
+	// gl_FragColor = vec4(ascii(vec3(0)), 1.0);
+	// gl_FragColor = texture2D(u_texture, vec2(0));
+	// gl_FragColor = vec4(gl_FragCoord.xy / res, 1.0, 1.0);
 	gl_FragColor = vec4(smoke(), 1.0);
 }

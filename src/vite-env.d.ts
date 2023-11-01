@@ -8,6 +8,8 @@ declare module "react-shader-canvas" {
     width: number;
     height: number;
     style?: CSSProperties;
+    uniforms?: { [K: string]: any };
+    superSample?: number;
     timeSync: boolean;
   }
 
@@ -17,6 +19,11 @@ declare module "react-shader-canvas" {
 }
 
 declare module "*.frag" {
+  const value: string;
+  export default value;
+}
+
+declare module "*.vert" {
   const value: string;
   export default value;
 }

@@ -2,7 +2,6 @@ import fragmentShader from "assets/shader/shader.frag";
 import vertexShader from "assets/shader/default.vert";
 import links from "assets/links.json";
 import quotes from "assets/quotes.json";
-import image from "assets/font.png";
 
 import { Shader, ShaderProps } from "Shader";
 
@@ -21,13 +20,6 @@ export const App = () => {
       width: window.innerWidth,
       height: window.innerHeight,
     },
-  };
-
-  const uniforms = {
-    u_texture: image,
-    u_texture_size: 8,
-    u_texture_items: 8,
-    u_custom_color: [1.0, 0.0, 0.0, 1],
   };
 
   return (

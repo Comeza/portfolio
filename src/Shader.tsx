@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
+type ObjectToArray<A extends ReadonlyArray<string>, V> = {
+  [K in A[number]]: V;
+};
+
 export interface ShaderProps {
     fragmentShader: string;
     vertexShader: string;
@@ -27,6 +31,18 @@ function compileShader(
     return shader;
 }
 
+function gcd(a: number, b: number) {
+  if (a == 0) return b;
+
+  while (b != 0) {
+    const h = a % b;
+    a = b;
+    b = h;
+  }
+
+  return a;
+}
+
 // Helper function to link a shader program
 function linkProgram(
     gl: WebGL2RenderingContext,
@@ -47,6 +63,36 @@ function linkProgram(
     }
 
     return program;
+}
+
+function setupBuffers(gl: WebGL2RenderingContext) {
+  const vertexPositions = new Float32Array([-1, 1, -1, -1, 1, 1, 1, -1]);
+
+  const vertexBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+  gl.bufferData(gl.ARRAY_BUFFER, vertexPositions, gl.STATIC_DRAW);
+}
+
+function setupUniforms(
+  gl: WebGL2RenderingContext,
+  program: WebGLProgram
+): { positionHandle: number; [K: string]: WebGLUniformLocation } {
+  const positionHandle = gl.getAttribLocation(program, "a_position");
+  const timeHandle = gl.getUniformLocation(program, "u_time")!;
+  const gcdHandle = gl.getUniformLocation(program, "u_resgcd")!;
+  const resolutionHandle = gl.getUniformLocation(program, "u_resolution")!;
+
+  gl.enableVertexAttribArray(positionHandle);
+  gl.vertexAttribPointer(positionHandle, 2, gl.FLOAT, false, 2 * 4, 0);
+  gl.uniform2f(resolutionHandle, gl.canvas.width, gl.canvas.height);
+  gl.uniform1f(gcdHandle, gcd(gl.canvas.width, gl.canvas.height));
+
+  return {
+    timeHandle,
+    positionHandle,
+    gcdHandle,
+    resolutionHandle,
+  };
 }
 
 export const Shader = (props: ShaderProps) => {

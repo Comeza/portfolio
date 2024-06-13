@@ -1,5 +1,7 @@
-import fragmentShader from "assets/shader/shader.frag";
-import vertexShader from "assets/shader/default.vert";
+import fragmentShader from "assets/shader/default.glsl";
+import exampleShader from "assets/shader/example.glsl";
+import fogShader from "assets/shader/shader.glsl"
+
 import links from "assets/links.json";
 import quotes from "assets/quotes.json";
 

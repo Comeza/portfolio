@@ -1,9 +1,5 @@
-import fragmentShader from "assets/shader/shader.frag";
-import vertexShader from "assets/shader/default.vert";
 import links from "assets/links.json";
 import quotes from "assets/quotes.json";
-
-import { Shader, ShaderProps } from "Shader";
 
 interface Link {
     name: string;
@@ -13,18 +9,8 @@ interface Link {
 export const App = () => {
     const quote = quotes[new Date().getDate() % quotes.length];
 
-    const shader: ShaderProps = {
-        vertexShader,
-        fragmentShader,
-        canvasProps: {
-            width: window.innerWidth,
-            height: window.innerHeight,
-        },
-    };
-
     return (
         <div>
-            <Shader {...shader} />
             <div className="d-flex">
                 <div className="v-line" />
                 <div className="d-flex flex-v">

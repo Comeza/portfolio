@@ -1,14 +1,3 @@
-#ifdef GL_ES
-precision mediump float;
-#endif
-
-uniform vec2 u_resolution;
-uniform float u_time;
-uniform float u_dt;
-
-#define time u_time
-#define res u_resolution
-
 
 float random(vec2 pos) {
 	return fract(1.0 * sin(pos.y + fract(80.0 * sin(pos.x))));
@@ -63,9 +52,7 @@ vec3 ascii(vec3 color) {
 	return color;
 }
 
-void main() {
-	// gl_FragColor = vec4(ascii(vec3(0)), 1.0);
-	// gl_FragColor = texture2D(u_texture, vec2(0));
-	// gl_FragColor = vec4(gl_FragCoord.xy / res, 1.0, 1.0);
-	gl_FragColor = vec4(smoke(), 1.0);
+void mainImage(out vec4 fragColor, in vec2 fragCoord) {
+	vec2 pos = (fragCoord - iResolution) / min(iResolution.x, iResolution.y);
+	fragColor = vec4(smoke(pos), 1.0);
 }

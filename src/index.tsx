@@ -1,4 +1,3 @@
-import React from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "app";
 
@@ -10,9 +9,5 @@ const container = document.getElementById("root")!;
 const root = createRoot(container);
 
 root.render(
-  <React.StrictMode>
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <App />
-    </div>
-  </React.StrictMode>
+    <App />
 );

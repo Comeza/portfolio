@@ -1,15 +1,9 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
-import tsConfigPaths from "vite-tsconfig-paths";
-import rawPlugin from "vite-raw-plugin";
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react-swc'
+import tailwindcss from '@tailwindcss/vite'
+import tsconfig from "vite-tsconfig-paths"
 
-// https://vitejs.dev/config/
+// https://vite.dev/config/
 export default defineConfig({
-    plugins: [
-        react(),
-        tsConfigPaths(),
-        rawPlugin({
-            fileRegex: /\.(frag|vert|glsl)$/,
-        }),
-    ]
-});
+  plugins: [react(), tailwindcss(), tsconfig()],
+})

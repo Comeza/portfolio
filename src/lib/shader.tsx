@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react"
+import defaultVertexShader from "assets/default.vert?raw";
 
 interface ShaderCanvasProps {
     fs: string,
@@ -6,14 +7,14 @@ interface ShaderCanvasProps {
     uniforms: Record<string, UniformValue>
 }
 
-const defaultVertexShader = `
-  attribute vec2 a_position;
-  varying vec2 v_uv;
-  void main() {
-    gl_Position = vec4(a_position, 0.0, 1.0);
-    v_uv = vec2(a_position.x * 0.5 + 0.5, 1.0 - (a_position.y * 0.5 + 0.5));
-  }
-`;
+// const defaultVertexShader = `
+//   attribute vec2 a_position;
+//   varying vec2 v_uv;
+//   void main() {
+//     gl_Position = vec4(a_position, 0.0, 1.0);
+//     v_uv = vec2(a_position.x * 0.5 + 0.5, 1.0 - (a_position.y * 0.5 + 0.5));
+//   }
+// `;
 
 type Vec2 = [number, number];
 type Vec3 = [number, number, number];
@@ -51,8 +52,8 @@ export function ShaderCanvas({ fs, vs = defaultVertexShader, uniforms }: ShaderC
 
                     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
                     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-                    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-                    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+                    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+                    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
 
                     if (value instanceof HTMLImageElement) {
                         if (value.complete && value.naturalWidth !== 0) {
@@ -86,7 +87,7 @@ export function ShaderCanvas({ fs, vs = defaultVertexShader, uniforms }: ShaderC
         const canvas = canvasRef.current;
         if (!canvas) return;
 
-        const gl = canvas.getContext('webgl');
+        const gl = canvas.getContext('webgl2');
         if (!gl) {
             console.error("WebGL not supported");
             return;
@@ -140,7 +141,7 @@ export function ShaderCanvas({ fs, vs = defaultVertexShader, uniforms }: ShaderC
             }
 
 
-            if ('u_time' in uniformLocations) gl.uniform1f(uniformLocations['u_time'], time * 0.001);
+            if ('u_time' in uniformLocations) gl.uniform1f(uniformLocations['u_time'], time * 0.01);
             if ('u_resolution' in uniformLocations) gl.uniform2f(uniformLocations['u_resolution'], width, height);
 
             gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);

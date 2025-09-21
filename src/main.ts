@@ -132,7 +132,6 @@ const canvas = document.getElementById("canvas")!! as HTMLCanvasElement;
 resizeCanvasToDisplaySize(canvas);
 display(canvas);
 
-
-window.onresize = ((ev) => {
+window.onresize = ((_) => {
   resizeCanvasToDisplaySize(canvas);
 })

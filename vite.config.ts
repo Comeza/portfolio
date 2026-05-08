@@ -1,7 +1,6 @@
-import { defineConfig } from 'vite'
-import tailwind from "@tailwindcss/vite"
-import tsConfigPaths from "vite-tsconfig-paths"
+import { defineConfig } from "vite";
+import tailwind from "@tailwindcss/vite";
 
 export default defineConfig({
-    plugins: [tailwind(),tsConfigPaths()]
-})
+  plugins: [tailwind()],
+});

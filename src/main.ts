@@ -1,8 +1,8 @@
-import rawFragShader from "default.frag?raw";
-import rawVertShader from "default.vert?raw";
+import "@/main.css";
+import "@/fonts/hoover.css";
 
-import "main.css";
-import "fonts/hoover.css"
+import rawFragShader from "@/default.frag?raw";
+import rawVertShader from "@/default.vert?raw";
 
 let mousePosition = { x: 0, y: 0 };
 
@@ -38,7 +38,11 @@ function display(canvas: HTMLCanvasElement) {
   const draw = () => {
     gl.uniform2f(resolutionHandle, gl.canvas.width, gl.canvas.height);
     gl.uniform1f(timeHandle, performance.now() / 1000);
-    gl.uniform2f(mouseHandle, mousePosition.x, gl.canvas.height - mousePosition.y);
+    gl.uniform2f(
+      mouseHandle,
+      mousePosition.x,
+      gl.canvas.height - mousePosition.y,
+    );
 
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
     requestAnimationFrame(draw);
@@ -132,6 +136,6 @@ const canvas = document.getElementById("canvas")!! as HTMLCanvasElement;
 resizeCanvasToDisplaySize(canvas);
 display(canvas);
 
-window.onresize = ((_) => {
+window.onresize = (_) => {
   resizeCanvasToDisplaySize(canvas);
-})
+};

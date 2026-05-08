@@ -3,4 +3,5 @@ import tailwind from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [tailwind()],
+  resolve: { tsconfigPaths: true },
 });
